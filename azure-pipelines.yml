@@ -30,7 +30,7 @@ stages:
           - task: Npm@1
             displayName: npm run build
             inputs:
-              command: 'run'
+              command: 'run build'
               workingDir: '$(System.DefaultWorkingDirectory)/'
           
           
