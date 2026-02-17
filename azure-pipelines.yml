@@ -42,7 +42,7 @@ stages:
               rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
               includeRootFolder: true
               archiveType: 'zip'
-              archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
+              archiveFile: '$(System.DefaultWorkingDirectory)/build.zip'
               replaceExistingArchive: true
           
           - task: PublishPipelineArtifact@1
