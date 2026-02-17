@@ -25,12 +25,12 @@ stages:
             inputs:
               command: 'install'
               workingDir: '$(System.DefaultWorkingDirectory)'
-
-          - task: Npm@
-            displayName: npm Run Build
+          
+          - task: Npm@1
             inputs:
               command: 'custom'
-              workingDir: '$(System.DefaultWorkingDirectory)'
+              workingDir: '''$(System.DefaultWorkingDirectory)'''
               customCommand: 'npm run build'
+          
           
 
