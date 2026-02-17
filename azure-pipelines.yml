@@ -1,4 +1,5 @@
 trigger: none 
+pr: none
 pool: 
   name: terraform-agent
 
@@ -29,9 +30,8 @@ stages:
           - task: Npm@1
             displayName: npm run build
             inputs:
-              command: 'custom'
+              command: 'run'
               workingDir: '$(System.DefaultWorkingDirectory)/'
-              customCommand: 'build'
           
           
 
