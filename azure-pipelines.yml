@@ -13,30 +13,31 @@ stages:
       - job: Build_UI_Artifacts
         displayName: Build UI based artifcats for react App
         steps:
-          # - checkout: self
+          - checkout: self
           
-          # - task: NodeTool@0
-          #   displayName: Install Node Version 18.x
-          #   inputs:
-          #     versionSource: 'spec'
-          #     versionSpec: '18.x'
+          - task: NodeTool@0
+            displayName: Install Node Version 18.x
+            inputs:
+              versionSource: 'spec'
+              versionSpec: '18.x'
           
-          # - task: Npm@1
-          #   displayName: npm Install
-          #   inputs:
-          #     command: 'install'
-          #     workingDir: '$(System.DefaultWorkingDirectory)/'
-          #     verbose: true
+          - task: Npm@1
+            displayName: npm Install
+            inputs:
+              command: 'install'
+              workingDir: '$(System.DefaultWorkingDirectory)/'
+              verbose: true
           
-          # - task: Npm@1
-          #   displayName: npm run build
-          #   inputs:
-          #     command: 'custom'
-          #     workingDir: '$(System.DefaultWorkingDirectory)/'
-          #     customCommand: 'run build'
-          #     verbose: true
+          - task: Npm@1
+            displayName: npm run build
+            inputs:
+              command: 'custom'
+              workingDir: '$(System.DefaultWorkingDirectory)/'
+              customCommand: 'run build'
+              verbose: true
 
           - task: ArchiveFiles@2
+            displayName: zip artifacts
             inputs:
               rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build'
               includeRootFolder: true
@@ -45,6 +46,7 @@ stages:
               replaceExistingArchive: true
           
           - task: PublishPipelineArtifact@1
+            displayName: Artifatcs Publish
             inputs:
               targetPath: '$(System.DefaultWorkingDirectory)/build.zip'
               artifact: 'Reactdrop'
